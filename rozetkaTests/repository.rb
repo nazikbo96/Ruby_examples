@@ -1,6 +1,5 @@
 class Repos
-  attr_reader :searchItem
-  attr_writer :searchItem
+  attr_accessor :searchItem
   def initialize (searchItem)
     @searchItem = searchItem
   end
