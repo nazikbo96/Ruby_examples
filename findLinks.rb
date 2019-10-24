@@ -9,7 +9,7 @@ describe "LinksTest" do
        $driver = Selenium::WebDriver.for :chrome
        $driver.navigate.to "https://www.tutorialspoint.com/index.htm"
      end
-     
+
      after(:all) do
        $driver.quit
      end

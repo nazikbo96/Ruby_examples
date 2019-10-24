@@ -5,7 +5,7 @@ else
    puts "File not exists!"
 end
 
-aFile = File.new("TestFile.txt", "r")
+aFile = File.open("TestFile.txt")
 if aFile
    content = aFile.sysread(100)
    puts content
