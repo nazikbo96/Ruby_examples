@@ -7,6 +7,7 @@ describe "Searching tests" do
 
      before(:each) do
        $driver = Selenium::WebDriver.for :chrome
+       $driver.manage.timeouts.implicit_wait = 5
        $driver.navigate.to "https://rozetka.com.ua/"
      end
 
