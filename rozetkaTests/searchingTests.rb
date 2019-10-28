@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'selenium-webdriver'
 require_relative 'repository'
+
 describe "Searching tests" do
    context "When testing rozetka.com.ua page" do
 
@@ -31,7 +32,7 @@ describe "Searching tests" do
         puts "\nLength of array: #{elements.length}"
         # for learning only
 
-        expect($searhItem1.checker(elements)).to be true 
+        expect($searhItem1.checker(elements)).to be true
       end
 
       it "should load rozetka.com.ua page, type 'qweqwe' in search field
