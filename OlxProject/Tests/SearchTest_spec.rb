@@ -1,5 +1,5 @@
 require 'rubygems'
-require_relative '../Pages/Homepage'
+require_relative '../Pages/HomePage'
 
 describe "Searching tests" do
   context "When testing olx.ua " do
