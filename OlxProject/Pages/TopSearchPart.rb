@@ -1,6 +1,6 @@
 require_relative 'HomePage'
 
-class TopSearchPart
+module TopSearchPart
   public def TopSearchField
     return $driver.find_element(:id => ("search-text"))
   end
@@ -21,7 +21,6 @@ class TopSearchPart
     return $driver.find_element(:id => ("categorySelectList"))
   end
 
-  ##################
   public def TopSearchFieldInput(top_search_item)
     TopSearchField().clear
     TopSearchField().send_keys top_search_item
@@ -44,8 +43,8 @@ class TopSearchPart
     TopSearchFieldInput(search_item.searchItem)
     CityFieldInput(search_item.city)
     TopSearchButton().click
-    sleep(5) # Fail with out this line
+    sleep(5) # Fail without this line
     return SuccessfulSearchPage.new
   end
-  
+
 end

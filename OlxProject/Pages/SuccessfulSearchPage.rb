@@ -1,7 +1,10 @@
 require_relative 'HomePage'
 require_relative 'TopSearchPart'
+require_relative 'TopPart'
 
-class SuccessfulSearchPage < TopSearchPart
+class SuccessfulSearchPage
+  include TopSearchPart
+  include TopPart
 
   public def GetAllNames
     list_with_names = Array.new
@@ -18,7 +21,6 @@ class SuccessfulSearchPage < TopSearchPart
       if (name.downcase.include? search_item.downcase) ==false
         checker = false
       end
-      puts name
     end
     return checker
   end

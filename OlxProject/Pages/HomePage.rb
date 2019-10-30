@@ -2,9 +2,13 @@ require_relative '../Tools/driver'
 require_relative '../Reposes/SearchRepos'
 require_relative 'SuccessfulSearchPage'
 require_relative 'UnsuccessfulSearchPage'
+require_relative 'TopPart'
+require_relative 'LogRegisterPage'
 require_relative 'TopSearchPart'
 
 class HomePage
+  include TopPart
+
   public def HomeSearchField
     return $driver.find_element(:id => ("headerSearch"))
   end

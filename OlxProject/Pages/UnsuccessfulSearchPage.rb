@@ -1,7 +1,11 @@
 require_relative 'HomePage'
 require_relative 'TopSearchPart'
+require_relative 'TopPart'
 
-class UnsuccessfulSearchPage < TopSearchPart
+class UnsuccessfulSearchPage
+  include TopSearchPart
+  include TopPart
+
   NO_FOUND_MESSAGE = "Не найдено ни одного объявления"
 
   public def GetErrorMessage
