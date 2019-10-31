@@ -12,7 +12,7 @@ class TopSearchItem
     @city = city
   end
 end
-$searhSuccessfulItem = SearchItem.new("MacBook")
-$searhUnsuccessfulItem = SearchItem.new("qweqwe")
+$searh_successfu_item = SearchItem.new("MacBook")
+$searh_unsuccessful_item = SearchItem.new("qweqwe")
 
 $top_search_item = TopSearchItem.new("MacBook","Львовская область")
