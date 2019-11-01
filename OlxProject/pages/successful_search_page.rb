@@ -1,28 +1,19 @@
 require_relative '../tools/all_requires'
 require_relative 'top_search_part'
 require_relative 'top_part'
+require_relative 'product_component_conteiner'
 
 class SuccessfulSearchPage
   include TopSearchPart
   include TopPart
+  include ProductComponentContainer
 
-  def get_all_names
-    list_with_names = Array.new
-    tmp = $driver.find_elements(xpath: "//h3[contains(@class, 'lheight22 margintop5')]/a")
-    (tmp).each do |el|
-      list_with_names << el.text.to_s
-    end
-    list_with_names
+  def do_list_all_names
+    get_all_names.map!{|e| e.text}
   end
 
-  def correct_search?(search_item)
-    checker = true
-    get_all_names().each do |name|
-      if (name.downcase.include? search_item.downcase) == false
-        checker = false
-        puts "#{name} ----- #{search_item}"
-      end
-    end
-    checker
+  def not_correct_search?(search_item)
+    do_list_all_names.any? { |word| (word.downcase.include? search_item.downcase) == false }
   end
+
 end

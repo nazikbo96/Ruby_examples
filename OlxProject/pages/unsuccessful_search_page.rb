@@ -7,10 +7,10 @@ class UnsuccessfulSearchPage
   NO_FOUND_MESSAGE = "Не найдено ни одного объявления"
 
   def get_error_message
-    $driver.find_element(xpath: "//div[contains(@class, 'emptynew  large lheight18')]/p").text
+    driver.find_element(xpath: "//div[contains(@class, 'emptynew  large lheight18')]/p").text
   end
 
   def search_unsuccess?
-    (get_error_message().include? NO_FOUND_MESSAGE) ? true : false
+    get_error_message.include? NO_FOUND_MESSAGE
   end
 end
