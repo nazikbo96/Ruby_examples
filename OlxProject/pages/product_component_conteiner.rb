@@ -21,8 +21,12 @@ module ProductComponentContainer
     driver.find_element(xpath: "//a[contains(@data-cy,'page-link-last')]/span").text
   end
 
-  protected def prev_next(element)
-    driver.find_elements(xpath: "//#{element}[contains(@class,'link pageNextPrev')]")
+  protected def next_page
+    driver.find_element(xpath: "//a[contains(@data-cy,'page-link-next')]")
+  end
+
+  protected def prev_page
+    driver.find_element(xpath: "//a[contains(@data-cy,'page-link-prev')]")
   end
 
   def get_current_page_number
@@ -31,38 +35,49 @@ module ProductComponentContainer
 
   def goto_first_page
     scroll_down
-    wait_untill(first_page).click
+    first_page.click
     until correct_page_number?('1')
-      sleep(1)
+      sleep(0.5)
     end
   end
 
   def goto_last_page
     scroll_down
     last_p = last_page_text
-    wait_untill(last_page).click
+    last_page.click
     until correct_page_number?(last_p)
-      sleep(1)
+      sleep(0.5)
     end
   end
 
-  def goto_prev_next_page
+  def goto_next_page
     scroll_down
-    prev_p = (get_current_page_number.to_i + 1).to_s
-    next_p = (get_current_page_number.to_i - 1).to_s
-    (wait_untill(prev_next('a')[0])).click
-    until correct_page_number?(prev_p) || correct_page_number?(next_p)
-      sleep(1)
+    next_p = (get_current_page_number.to_i + 1).to_s
+    next_page.click
+    until correct_page_number?(next_p)
+      sleep(0.5)
     end
   end
 
-  def correct_button_count?(buttons, spans)
-    prev_next('a').length == buttons && prev_next("span").length == spans
+  def goto_prev_page
+    scroll_down
+    prev_p = (get_current_page_number.to_i - 1).to_s
+    prev_page.click
+    until correct_page_number?(prev_p)
+      sleep(0.5)
+    end
   end
 
   def correct_page_number?(page)
-    puts get_current_page_number
     get_current_page_number == page
+  end
+
+  def next_page_button_available?
+    driver.find_elements(xpath: "//a[contains(@data-cy,'page-link-next')]").empty?
+  end
+
+  def prev_page_button_available?
+    driver.find_elements(xpath: "//a[contains(@data-cy,'page-link-prev')]").empty?
   end
 
 end

@@ -23,28 +23,29 @@ describe "Searching tests" do
     it "verify page number and buttons count at first page " do
       successful_search_page = SuccessfulSearchPage.new
       expect(successful_search_page.correct_page_number?('1')).to be true
-      expect(successful_search_page.correct_button_count?(1, 1)).to be true
+      expect(successful_search_page.next_page_button_available?).to be false
+      expect(successful_search_page.prev_page_button_available?).to be true
     end
     it "verify page number and buttons count at second page" do
       successful_search_page = SuccessfulSearchPage.new
-      successful_search_page.goto_prev_next_page
-      #sleep(3)
+      successful_search_page.goto_next_page
       expect(successful_search_page.correct_page_number?('2')).to be true
-      expect(successful_search_page.correct_button_count?(2, 0)).to be true
+      expect(successful_search_page.next_page_button_available?).to be false
+      expect(successful_search_page.prev_page_button_available?).to be false
     end
     it "verify page number and buttons count at last page " do
       successful_search_page = SuccessfulSearchPage.new
       successful_search_page.goto_last_page
-      #sleep(3)
       expect(successful_search_page.correct_page_number?('154')).to be true
-      expect(successful_search_page.correct_button_count?(1, 1)).to be true
+      expect(successful_search_page.next_page_button_available?).to be true
+      expect(successful_search_page.prev_page_button_available?).to be false
     end
     it "verify page number and buttons count at pre last page" do
       successful_search_page = SuccessfulSearchPage.new
-      successful_search_page.goto_prev_next_page
-      #sleep(3)
+      successful_search_page.goto_prev_page
       expect(successful_search_page.correct_page_number?('153')).to be true
-      expect(successful_search_page.correct_button_count?(2, 0)).to be true
+      expect(successful_search_page.next_page_button_available?).to be false
+      expect(successful_search_page.prev_page_button_available?).to be false
     end
   end
 end
