@@ -20,13 +20,12 @@ class HomePage
     home_search_button.click
   end
 
-  def make_success_home_search
-    home_search_button_click
-    SuccessfulSearchPage.new
+  def unsuccessfull_message_present?
+    driver.find_elements(xpath: "//div[contains(@class, 'emptynew  large lheight18')]/p").empty?
   end
 
-  def make_unsuccess_home_search
+  def make_home_search
     home_search_button_click
-    UnsuccessfulSearchPage.new
+    unsuccessfull_message_present? ? SuccessfulSearchPage.new : UnsuccessfulSearchPage.new
   end
 end

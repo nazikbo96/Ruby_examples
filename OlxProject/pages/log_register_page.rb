@@ -4,6 +4,8 @@ class LogRegisterPage
 
   include TopPart
 
+  INPUT = "input[contains(@id,'checkbox_accept-terms')]"
+
   protected def login_tab
     driver.find_element(id: 'login_tab')
   end
@@ -41,7 +43,7 @@ class LogRegisterPage
   end
 
   protected def reg_accept_checkbox
-    driver.find_element(xpath: "//input[contains(@id,'checkbox_accept-terms')]/../../.././label[contains(@class,'icon f_checkbox inlblk vtop')]")
+    driver.find_element(xpath: "//#{INPUT}/../../.././label[contains(@class,'icon f_checkbox inlblk vtop')]")
   end
 
   protected def reg_user_button

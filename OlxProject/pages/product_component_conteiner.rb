@@ -2,11 +2,12 @@ require_relative '../tools/all_requires'
 
 module ProductComponentContainer
 
-   def get_all_products
-     driver.find_element(id: 'offers_table')
+  def get_all_names
+    driver.find_elements(css: ".lheight22.margintop5>a")
   end
 
-  def get_all_names
-    driver.find_elements(xpath: "//h3[contains(@class, 'lheight22 margintop5')]/a")
+  def current_page_number
+    driver.find_element(xpath: "//span[contains(@class,'block br3 c41 large tdnone lheight24 current')]")
   end
+
 end
