@@ -14,3 +14,12 @@ end
 def driver_close
   driver.quit
 end
+
+def scroll_down
+  driver.execute_script('window.scrollTo(0, document.body.scrollHeight)')
+end
+
+def wait_untill(el)
+  wait = Selenium::WebDriver::Wait.new(:timeout => 15)
+  element = wait.until { el }
+end

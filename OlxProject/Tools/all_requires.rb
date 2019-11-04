@@ -1,3 +1,5 @@
+require 'rubygems'
+
 require_relative '../pages/home_page'
 require_relative '../pages/log_register_page'
 require_relative '../pages/product_component'
