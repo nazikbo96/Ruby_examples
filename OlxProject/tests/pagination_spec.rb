@@ -1,7 +1,7 @@
 require 'rubygems'
 require_relative '../tools/all_requires'
 
-describe "Searching tests" do
+describe "Pagination tests" do
 
   let( :home_search ) { SearchItem.new("MacBook") }
   let( :web_site    ) { "https://www.olx.ua/" }
@@ -36,14 +36,14 @@ describe "Searching tests" do
     it "verify page number and buttons count at last page " do
       successful_search_page = SuccessfulSearchPage.new
       successful_search_page.goto_last_page
-      expect(successful_search_page.correct_page_number?('154')).to be true
+      expect(successful_search_page.correct_page_number?('156')).to be true
       expect(successful_search_page.next_page_button_available?).to be true
       expect(successful_search_page.prev_page_button_available?).to be false
     end
     it "verify page number and buttons count at pre last page" do
       successful_search_page = SuccessfulSearchPage.new
       successful_search_page.goto_prev_page
-      expect(successful_search_page.correct_page_number?('153')).to be true
+      expect(successful_search_page.correct_page_number?('155')).to be true
       expect(successful_search_page.next_page_button_available?).to be false
       expect(successful_search_page.prev_page_button_available?).to be false
     end

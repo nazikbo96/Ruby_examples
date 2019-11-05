@@ -5,6 +5,14 @@ module ProductComponentContainer
     driver.find_elements(css: ".lheight22.margintop5>a")
   end
 
+  def get_all_prices
+    driver.find_elements(xpath: "//table[contains(@id, 'offers_table')]//p[contains(@class,'price')]")
+  end
+
+  def get_all_items_with_delivery
+    driver.find_elements(css: "div.olx-delivery-badge")
+  end
+  
   protected def current_page_number
     driver.find_element(xpath: "//span[contains(@class,'block br3 c41 large tdnone lheight24 current')]")
   end
@@ -17,16 +25,16 @@ module ProductComponentContainer
     driver.find_element(xpath: "//a[contains(@data-cy,'page-link-last')]")
   end
 
-  protected def last_page_text
-    driver.find_element(xpath: "//a[contains(@data-cy,'page-link-last')]/span").text
-  end
-
   protected def next_page
     driver.find_element(xpath: "//a[contains(@data-cy,'page-link-next')]")
   end
 
   protected def prev_page
     driver.find_element(xpath: "//a[contains(@data-cy,'page-link-prev')]")
+  end
+
+  def last_page_text
+    driver.find_element(xpath: "//a[contains(@data-cy,'page-link-last')]/span").text
   end
 
   def get_current_page_number
@@ -79,5 +87,6 @@ module ProductComponentContainer
   def prev_page_button_available?
     driver.find_elements(xpath: "//a[contains(@data-cy,'page-link-prev')]").empty?
   end
+
 
 end

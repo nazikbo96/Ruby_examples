@@ -18,12 +18,16 @@ module TopSearchPart
     driver.find_element(id: 'main-category-choose-label')
   end
 
-  protected def category_select_list
-    driver.find_element(id: 'categorySelectList')
-  end
-
   protected def save_search_top_button
     driver.find_element(id: 'saveSearchCriteriaTop')
+  end
+
+  protected def delivery_cheack_box
+    driver.find_element(xpath: "//i[contains(@data-icon, 'olx-delivery')]")
+  end
+
+  protected def geo_suggestions_close
+    driver.find_element(id: "geo-suggestions-close")
   end
 
   def top_search_field_input(top_search_item)
@@ -33,6 +37,17 @@ module TopSearchPart
 
   def city_field_input(search_city_item)
     city_field.send_keys search_city_item
+  end
+
+  def delivery_cheack_box_click
+    delivery_cheack_box.click
+    until is_correct_items_with_delivery
+      sleep(0.5)
+    end
+  end
+
+  def geo_suggestions_close_click
+    geo_suggestions_close.click
   end
 
   def save_search_top_button_click
