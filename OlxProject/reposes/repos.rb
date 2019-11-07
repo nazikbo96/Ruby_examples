@@ -12,7 +12,11 @@ class TopSearchItem
     @city = city
   end
 end
-$searhSuccessfulItem = SearchItem.new("MacBook")
-$searhUnsuccessfulItem = SearchItem.new("qweqwe")
 
-$top_search_item = TopSearchItem.new("MacBook","Львовская область")
+class User
+  attr_accessor :mail , :pass
+  def initialize (mail, pass)
+    @mail = mail
+    @pass = pass
+  end
+end

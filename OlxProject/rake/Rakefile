@@ -1,0 +1,18 @@
+require 'rake'
+require 'rspec/core/rake_task'
+require 'parallel_tests'
+
+RSpec::Core::RakeTask.new(:spec) do |t|
+  t.pattern = Dir.glob('../tests/*_spec.rb')
+  t.rspec_opts = '--format documentation'
+end
+
+task :parallel_rspec do
+  pattern = '../tests/*_spec.rb'
+  args = ['-t', 'rspec']
+  Dir.glob(pattern).each { |f| args << f }
+  ParallelTests::CLI.new.run(args)
+end
+
+task default: :parallel_rspec
+task :spec
