@@ -2,7 +2,7 @@ require_relative '../tools/all_requires'
 module ProductComponentContainer
 
   def get_all_names
-    driver.find_elements(css: ".lheight22.margintop5>a")
+    driver.find_elements(css: '.lheight22.margintop5>a')
   end
 
   def get_all_prices
@@ -10,28 +10,32 @@ module ProductComponentContainer
   end
 
   def get_all_items_with_delivery
-    driver.find_elements(css: "div.olx-delivery-badge")
+    driver.find_elements(css: 'div.olx-delivery-badge')
   end
-  
-  protected def current_page_number
+
+  protected
+
+  def current_page_number
     driver.find_element(xpath: "//span[contains(@class,'block br3 c41 large tdnone lheight24 current')]")
   end
 
-  protected def first_page
+  def first_page
     driver.find_element(xpath: "//*[text() = '1']")
   end
 
-  protected def last_page
+  def last_page
     driver.find_element(xpath: "//a[contains(@data-cy,'page-link-last')]")
   end
 
-  protected def next_page
+  def next_page
     driver.find_element(xpath: "//a[contains(@data-cy,'page-link-next')]")
   end
 
-  protected def prev_page
+  def prev_page
     driver.find_element(xpath: "//a[contains(@data-cy,'page-link-prev')]")
   end
+
+  public
 
   def last_page_text
     driver.find_element(xpath: "//a[contains(@data-cy,'page-link-last')]/span").text

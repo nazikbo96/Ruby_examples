@@ -20,6 +20,6 @@ def scroll_down
 end
 
 def wait_untill(el)
-  wait = Selenium::WebDriver::Wait.new(:timeout => 10)
+  wait = Selenium::WebDriver::Wait.new(timeout: 10)
   element = wait.until { el }
 end

@@ -4,7 +4,7 @@ class UnsuccessfulSearchPage
   include TopSearchPart
   include TopPart
 
-  NO_FOUND_MESSAGE = "Не найдено ни одного объявления"
+  NO_FOUND_MESSAGE = 'Не найдено ни одного объявления'
 
   def error_message
     driver.find_element(xpath: "//div[contains(@class, 'emptynew  large lheight18')]/p")

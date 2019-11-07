@@ -2,33 +2,37 @@ require_relative '../tools/all_requires'
 
 module TopSearchPart
 
-  protected def top_search_field
+  protected
+
+  def top_search_field
     driver.find_element(id: 'search-text')
   end
 
-  protected def top_search_button
+  def top_search_button
     driver.find_element(id: 'search-submit')
   end
 
-  protected def city_field
+  def city_field
     driver.find_element(id: 'cityField')
   end
 
-  protected def category_choose_label
+  def category_choose_label
     driver.find_element(id: 'main-category-choose-label')
   end
 
-  protected def save_search_top_button
+  def save_search_top_button
     driver.find_element(id: 'saveSearchCriteriaTop')
   end
 
-  protected def delivery_cheack_box
+  def delivery_cheack_box
     driver.find_element(xpath: "//i[contains(@data-icon, 'olx-delivery')]")
   end
 
-  protected def geo_suggestions_close
-    driver.find_element(id: "geo-suggestions-close")
+  def geo_suggestions_close
+    driver.find_element(id: 'geo-suggestions-close')
   end
+
+  public
 
   def top_search_field_input(top_search_item)
     top_search_field.clear

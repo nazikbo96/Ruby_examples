@@ -6,50 +6,54 @@ class LogRegisterPage
 
   INPUT = "input[contains(@id,'checkbox_accept-terms')]"
 
-  protected def login_tab
+  protected
+
+  def login_tab
     driver.find_element(id: 'login_tab')
   end
 
-  protected def log_user_email_field
+  def log_user_email_field
     driver.find_element(id: 'userEmail')
   end
 
-  protected def log_user_pass_field
+  def log_user_pass_field
     driver.find_element(id: 'userPass')
   end
 
-  protected def log_user_button
+  def log_user_button
     driver.find_element(id: 'se_userLogin')
   end
 
-  protected def log_fb_button
+  def log_fb_button
     driver.find_element(id: 'fblogin')
   end
 
-  protected def captha                              # TODO
+  def captha                              # TODO
     driver.find_element(id: 'recaptcha-anchor')
   end
   # -----------------------------------------------------------------------
-  protected def register_tab
+  def register_tab
     driver.find_element(id: 'register_tab')
   end
 
-  protected def reg_user_pass
+  def reg_user_pass
     driver.find_element(id: 'userPassRegister')
   end
 
-  protected def reg_user_email_field
+  def reg_user_email_field
     driver.find_element(id: 'userEmailPhoneRegister')
   end
 
-  protected def reg_accept_checkbox
+  def reg_accept_checkbox
     driver.find_element(xpath: "//#{INPUT}/../../.././label[contains(@class,'icon f_checkbox inlblk vtop')]")
   end
 
-  protected def reg_user_button
+  def reg_user_button
     driver.find_element(id: 'button_register')
   end
   # -----------------------------------------------------------------------
+  public
+
   def login_tab_click
     return login_tab.click
   end
@@ -91,6 +95,10 @@ class LogRegisterPage
     reg_user_button.click
   end
   # -----------------------------------------------------------------------
+  def fb_login_button_click
+    driver.find_element(id: 'loginbutton').click
+  end
+
   def fb_mail_field_input(mail)
     driver.find_element(id: 'email').send_keys mail
   end
@@ -99,8 +107,10 @@ class LogRegisterPage
     driver.find_element(id: 'pass').send_keys pass
   end
 
-  def fb_login_button_click
-    driver.find_element(id: 'loginbutton').click
+  def fb_login_without_data
+    login_tab_click
+    log_fb_button_click
+    UserPage.new
   end
 
   def registration(user)

@@ -1,20 +1,18 @@
 require 'rubygems'
 require_relative '../tools/all_requires'
 
-describe "Register tests" do
+describe 'Register tests' do
 
-    let(:fb_account) {User.new("nazar-y96@ukr.net","123546")}
-    let( :web_site   ) { "https://www.olx.ua/" }
+    let(:fb_account) { User.new('nazar-y96@ukr.net','123546') }
 
-    context "When testing olx.ua " do
+    context 'When testing olx.ua' do
 
-      after(:all) do
-        driver_close
+      before(:all) do
+        start_test('https://www.olx.ua/')
       end
 
-      it "register account " do
+      it 'verify user can registrate new account' do
         home_page = HomePage.new
-        start_test(web_site)
         register_page = home_page.top_login_button_click
         register_page.registration(fb_account)
       end

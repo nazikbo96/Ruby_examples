@@ -1,20 +1,18 @@
 require 'rubygems'
 require_relative '../tools/all_requires'
 
-describe "Searching tests" do
+describe 'Searching with only delivery tests' do
 
-  let( :home_search ) { SearchItem.new("MacBook") }
-  let( :web_site    ) { "https://www.olx.ua/" }
+  let(:home_search) { SearchItem.new('MacBook') }
 
-  context "When testing olx.ua " do
+  context 'When testing olx.ua' do
 
-    after(:all) do
-      driver_close
+    before(:all) do
+      start_test('https://www.olx.ua/')
     end
 
-    it "verify opening olx home page, making successful search " do
+    it 'verify opening olx home page, making successful search' do
       home_page = HomePage.new
-      start_test(web_site)
       home_page.home_search_field_input(home_search.searchItem)
       successful_search_page = home_page.make_home_search
       successful_search_page.geo_suggestions_close_click

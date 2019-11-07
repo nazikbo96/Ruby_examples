@@ -1,52 +1,34 @@
 require_relative '../tools/all_requires'
 
 module WrapperPart
-  protected def currency_dolar
-    driver.find_element(xpath: "//a[contains(@data-symbol, '$')]")
+
+  protected
+  def currency_by_type(type)
+    driver.find_element(xpath: "//a[contains(@data-symbol, '#{type}')]")
   end
 
-  protected def currency_euro
-    driver.find_element(xpath: "//a[contains(@data-symbol, '€')]")
-  end
-
-  protected def currency_hryvnia
-    driver.find_element(xpath: "//a[contains(@data-symbol, 'грн.')]")
-  end
-
-  protected def current_currency
+  def current_currency
     driver.find_element(xpath: "//ul[contains(@class, 'view-currency currencySelector')]
     //span[contains(@class, 'selected')]")
   end
 
-  protected def sort_price_asc_button
+  def sort_price_asc_button
     driver.find_element(xpath: "//a[contains(@data-type, 'filter_float_price:asc')]")
   end
 
-  protected def sort_price_desc_button
+  def sort_price_desc_button
     driver.find_element(xpath: "//a[contains(@data-type, 'filter_float_price:desc')]")
   end
 
+  public
+
   def current_sort_method
-    driver.find_element(css: "#order-select-gallery>li>a.link.selected>span").text
+    driver.find_element(css: '#order-select-gallery>li>a.link.selected>span').text
   end
 
-  def currency_change_dolar
-    currency_dolar.click
-    until current_currency.text == '$'
-      sleep(0.5)
-    end
-  end
-
-  def currency_change_euro
-    currency_euro.click
-    until current_currency.text == '€'
-      sleep(0.5)
-    end
-  end
-
-  def currency_change_hryvnia
-    currency_hryvnia.click
-    until current_currency.text == 'грн.'
+  def change_currency_to(type)
+    currency_by_type(type).click
+    until current_currency.text == type
       sleep(0.5)
     end
   end

@@ -4,14 +4,17 @@ require_relative 'top_part'
 class HomePage
   include TopPart
 
-  protected def home_search_field
+  protected
+
+  def home_search_field
     driver.find_element(id: 'headerSearch')
   end
 
-  protected def home_search_button
+  def home_search_button
     driver.find_element(id: 'submit-searchmain')
   end
 
+  public
   def home_search_field_input(search_item)
     home_search_field.send_keys search_item
   end
