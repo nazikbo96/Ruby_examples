@@ -48,6 +48,6 @@ describe 'Pagination tests' do
       expect(successful_search_page.next_page_button_available?).to be false
       expect(successful_search_page.prev_page_button_available?).to be false
     end
-    
+
   end
 end
