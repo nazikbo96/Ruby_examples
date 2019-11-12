@@ -42,7 +42,7 @@ module ProductComponentContainer
   end
 
   def get_current_page_number
-    wait_untill(current_page_number).text
+    wait_until(current_page_number).text
   end
 
   def goto_first_page

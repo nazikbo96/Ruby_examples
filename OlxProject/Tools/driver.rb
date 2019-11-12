@@ -19,7 +19,7 @@ def scroll_down
   driver.execute_script('window.scrollTo(0, document.body.scrollHeight)')
 end
 
-def wait_untill(el)
+def wait_until(el)
   wait = Selenium::WebDriver::Wait.new(timeout: 10)
   element = wait.until { el }
 end
