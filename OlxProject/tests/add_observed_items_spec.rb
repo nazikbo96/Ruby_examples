@@ -2,7 +2,7 @@ require 'rubygems'
 require_relative '../tools/all_requires'
 
 describe 'Add observed items tests' do
-  let(:fb_account) { User.new('nazar-y96@ukr.net','123546) }
+  let(:fb_account) { User.new('nazar-y96@ukr.net','123546') }
   let(:top_search) { SearchItem.new('MacBook') }
 
   context 'When testing olx.ua'  do
