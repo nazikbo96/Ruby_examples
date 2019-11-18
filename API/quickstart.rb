@@ -12,6 +12,8 @@ CREDENTIALS_PATH = "credentials.json".freeze
 TOKEN_PATH = "token.yaml".freeze
 SCOPE = Google::Apis::GmailV1::AUTH_SCOPE
 
+Gmail = Google::Apis::GmailV1    # for initializee_the_API
+
 def authorize
   client_id = Google::Auth::ClientId.from_file CREDENTIALS_PATH
   token_store = Google::Auth::Stores::FileTokenStore.new file: TOKEN_PATH
@@ -29,45 +31,28 @@ def authorize
   end
   credentials
 end
-#-------------------------------------------------------------------------------
+
 def create_message(sender, to_who, message_subject, message_text)
   message = Mail.new do
     from    sender
     to      to_who
     subject message_subject
     body    message_text
+    add_file 'image.jpg'
   end
-  puts 'Message was created!'
-  return message
 end
-#-------------------------------------------------------------------------------
+
 def send_message(service, user_id, message)
   msg = message.encoded
   message_object = Google::Apis::GmailV1::Message.new(raw:message.to_s)
   mess = service.send_user_message(user_id, message_object)
   puts "Message was sended! Message id = #{mess.id}"
-  return mess.id
+  mess.id
 end
-#-------------------------------------------------------------------------------
 
-# Initialize the API
-Gmail = Google::Apis::GmailV1 # Alias the module
-service = Gmail::GmailService.new
-service.client_options.application_name = APPLICATION_NAME
-service.authorization = authorize
-
-# Show the user's labels
-describe 'API: practical_task ' do
-  it 'verify sending mail' do
-    user_id = "me"
-    result = service.list_user_labels user_id
-    puts "Labels:"
-    puts "No labels found" if result.labels.empty?
-    result.labels.each { |label| puts "- #{label.name}" }
-
-    test_message = create_message('nazikbo1996@gmail.com','nazikbo1996@gmail.com','Testing  messages.',File.read('body.txt'))
-    message_id = send_message(service, user_id,test_message)
-    expect(message_id.to_s.empty?).to be false
-    expect(service.get_user_message(user_id, message_id ).to_s.empty?).to be false
-  end
+def initializee_the_API
+  service = Gmail::GmailService.new
+  service.client_options.application_name = APPLICATION_NAME
+  service.authorization = authorize
+  return service
 end
