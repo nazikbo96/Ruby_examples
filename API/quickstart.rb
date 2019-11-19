@@ -1,15 +1,15 @@
 require 'rubygems'
-require "google/apis/gmail_v1"
-require "googleauth"
-require "googleauth/stores/file_token_store"
-require "fileutils"
+require 'google/apis/gmail_v1'
+require 'googleauth'
+require 'googleauth/stores/file_token_store'
+require 'fileutils'
 require 'mail'
 
-OOB_URI = "urn:ietf:wg:oauth:2.0:oob".freeze
-APPLICATION_NAME = "Gmail API Ruby Quickstart".freeze
-CREDENTIALS_PATH = "credentials.json".freeze
+OOB_URI = 'urn:ietf:wg:oauth:2.0:oob'.freeze
+APPLICATION_NAME = 'Gmail API Ruby Quickstart'.freeze
+CREDENTIALS_PATH = 'credentials.json'.freeze
 
-TOKEN_PATH = "token.yaml".freeze
+TOKEN_PATH = 'token.yaml'.freeze
 SCOPE = Google::Apis::GmailV1::AUTH_SCOPE
 
 Gmail = Google::Apis::GmailV1    # for initializee_the_API
@@ -18,12 +18,12 @@ def authorize
   client_id = Google::Auth::ClientId.from_file CREDENTIALS_PATH
   token_store = Google::Auth::Stores::FileTokenStore.new file: TOKEN_PATH
   authorizer = Google::Auth::UserAuthorizer.new client_id, SCOPE, token_store
-  user_id = "default"
+  user_id = 'default'
   credentials = authorizer.get_credentials user_id
   if credentials.nil?
     url = authorizer.get_authorization_url base_url: OOB_URI
-    puts "Open the following URL in the browser and enter the " \
-         "resulting code after authorization:\n" + url
+    puts 'Open the following URL in the browser and enter the ' \
+         'resulting code after authorization:\n' + url
     code = gets
     credentials = authorizer.get_and_store_credentials_from_code(
       user_id: user_id, code: code, base_url: OOB_URI
@@ -32,13 +32,13 @@ def authorize
   credentials
 end
 
-def create_message(sender, to_who, message_subject, message_text)
+def create_message(from, to, subject, body, file)
   message = Mail.new do
-    from    sender
-    to      to_who
-    subject message_subject
-    body    message_text
-    add_file 'image.jpg'
+    from    from
+    to      to
+    subject subject
+    body    body
+    add_file file
   end
 end
 
