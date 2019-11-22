@@ -56,4 +56,5 @@ gem 'unicode-display_width', '>= 1.6.0'
 gem 'watir-webdriver', '>= 0.9.9'
 gem 'webrick', '>= 1.4.2'
 gem 'xmlrpc', '>= 0.3.0'
+gem 'google-api-client', '~> 0.34'
 gem 'zlib', '>= 1.0.0', require: false
