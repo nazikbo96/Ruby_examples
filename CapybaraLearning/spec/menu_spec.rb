@@ -29,7 +29,7 @@ describe 'When testing demo.opensourcecms website' do
     pages_array.each do |current_page|
       current_page.visit_page
       expect(current_page).to have_content current_page.page_message
-      puts "#{current_page.to_s} --- was visited."
+      expect(current_page).to have_css current_page.page_css
     end
   end
 

@@ -22,8 +22,8 @@ module DashbordPart SitePrism::Page
     headings
   end
 
-  def correct_headings?
-    get_main_page_headings == dashboard_headings
+  def correct_headings?(headings)
+    get_main_page_headings == headings
   end
 
   def get_main_page_input
