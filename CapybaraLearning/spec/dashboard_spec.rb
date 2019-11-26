@@ -1,7 +1,7 @@
 require_relative '../all_requires.rb'
 
 describe 'When testing demo.opensourcecms website' do
-  let(:count_of_ref) { 43 }
+  let(:count_of_ref) { 41 }
   let(:count_of_buttons) { 7 }
   let(:count_of_headings) { 12 }
   let(:count_of_inputs) { 2 }
@@ -34,7 +34,7 @@ describe 'When testing demo.opensourcecms website' do
   end
 
   it 'Verify text of headings on dashbord page' do
-    expect(home_page.correct_headings?(dashboard_headings)).to be true
+    expect(home_page.get_main_page_headings).to eq dashboard_headings
   end
 
   it 'Verify count of input on dashbord page' do
