@@ -1,0 +1,12 @@
+require 'rubygems'
+require 'site_prism'
+require 'capybara'
+require 'capybara/poltergeist'
+require 'capybara/dsl'
+require 'capybara/rspec'
+require 'pry'
+
+require_relative 'pages/menu_pages.rb'
+require_relative 'pages/login_page.rb'
+require_relative 'pages/menu_part.rb'
+require_relative 'pages/dashboard_part.rb'
