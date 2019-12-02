@@ -1,11 +1,15 @@
 require 'rubygems'
 require 'rspec'
-require 'watir-webdriver'
+require 'selenium-webdriver'
 
-include Selenium
+def driver
+  Selenium::WebDriver.for :chrome
+end
 
-browser = Watir::Browser.new :chrome
-
-Before do
-  @browser = browser
+def start_test(web_site)
+  @driver = driver
+  @driver.manage.timeouts.implicit_wait = 5
+  @driver.manage.window.maximize
+  @driver.navigate.to "https://demo.openmrs.org/openmrs/login.htm"
+  LoginPage.new(@driver)
 end

@@ -1,28 +1,28 @@
 class LoginPage
-  attr_accessor :loginTab,:txtUsername,:txtPassword,:btnLogin
+  attr_accessor :txtUsername,:txtPassword,:btnLogin,:location
 
   def initialize(browser)
-    @browser = browser
-    @loginTab    = @browser.a(:text =&gt; "Login")
-    @txtUsername = @browser.text_field(:id =&gt; "userId")
-    @txtPassword = @browser.text_field(:id =&gt; "password")
-    @btnLogin    = @browser.element(:id =&gt; "log_in_button")
+    @driver = browser
+    @txtUsername = @driver.find_element(id: 'username')
+    @txtPassword = @driver.find_element(id: 'password')
+    @location    = @driver.find_element(xpath: "//li[contains(text(),'Inpatient Ward')]")
+    @btnLogin    = @driver.find_element(id: 'loginButton')
   end
 
   def visit
-    @browser.goto "https://codoid.com"
-  end
-
-  def clickLoginTab()
-    @loginTab.click
+    @driver.navigate.to "https://demo.openmrs.org/openmrs/login.htm"
   end
 
   def enterUsername(username)
-    @txtUsername.set username
+    @txtUsername.send_keys username
   end
 
   def enterPassword(password)
-    @txtPassword.set password
+    @txtPassword.send_keys password
+  end
+
+  def clickLocation
+    @location.click
   end
 
   def clickLoginButton
@@ -30,6 +30,6 @@ class LoginPage
   end
 
   def verifyHomePageHeader()
-    @browser.element(:text =&gt; "Dashboard").wait_until_present
+    @driver.find_element(:xpath => "//h4[contains(text(),'Logged in as Super User () at Inpatient Ward.')]")
   end
 end
