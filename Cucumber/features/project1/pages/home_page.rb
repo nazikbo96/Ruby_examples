@@ -1,6 +1,6 @@
 require_relative 'top_part.rb'
 class HomePage
-  attr_accessor :find_patient_btn,:register_patient_btn
+  attr_accessor :driver
 
   include TopPart
 
@@ -9,7 +9,7 @@ class HomePage
     @find_patient_btn = @driver.find_element(id: 'coreapps-activeVisitsHomepageLink-coreapps-activeVisitsHomepageLink-extension')
     @register_patient_btn = @driver.find_element(id: 'referenceapplication-registrationapp-registerPatient-homepageLink-referenceapplication-registrationapp-registerPatient-homepageLink-extension')
     @system_administration_btn = @driver.find_element(id: 'coreapps-systemadministration-homepageLink-coreapps-systemadministration-homepageLink-extension')
-    @manage_scheduler_btn = @driver.find_element(id: 'referenceapplication-manageScheduler-app')
+    @data_management_btn = @driver.find_element(id: 'coreapps-datamanagement-homepageLink-coreapps-datamanagement-homepageLink-extension')
   end
 
   def find_patient_btn_click
@@ -22,10 +22,14 @@ class HomePage
     RegisterPatient.new(@driver)
   end
 
-  def goto_manage_scheduler
+  def system_administration_btn_click
     @system_administration_btn.click
-    @manage_scheduler_btn.click
-    ManageSchedulerPage.new(@driver)
+    SystemAdministrationPage.new(@driver)
+  end
+
+  def data_management_btn_click
+    @data_management_btn.click
+    DataManagementPage.new(@driver)
   end
 
 end

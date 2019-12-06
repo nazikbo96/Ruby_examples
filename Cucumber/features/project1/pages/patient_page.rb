@@ -1,6 +1,5 @@
 require_relative 'top_part.rb'
 class PatientPage
-  attr_accessor :delete_patient_btn,:delete_reason_field
 
   include TopPart
 

@@ -1,6 +1,20 @@
 require_relative 'top_part.rb'
-class HomePage
-  attr_accessor :add_new_task_btn
+
+class SystemAdministrationPage
+
+  include TopPart
+
+  def initialize(driver)
+    @driver = driver
+    @manage_scheduler_btn = @driver.find_element(id: 'referenceapplication-manageScheduler-app')
+  end
+  def manage_scheduler_btn_click
+    @manage_scheduler_btn.click
+    ManageSchedulerPage.new(@driver)
+  end
+end
+
+class ManageSchedulerPage
 
   include TopPart
 
@@ -13,5 +27,5 @@ class HomePage
     @add_new_task_btn.click
     NewTaskPage.new(@driver)
   end
-  
+
 end

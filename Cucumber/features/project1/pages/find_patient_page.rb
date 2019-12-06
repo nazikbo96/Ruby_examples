@@ -7,7 +7,7 @@ class FindPatientPage
   def initialize(browser)
     @driver = browser
     @find_patient_search_field = @driver.find_element(id: 'patient-search')
-    @table_column_content = @driver.find_elements(css: "td")
+    @table_column_content = @driver.find_elements(css: 'td')
   end
 
   def find_patient_search_field_input(person)
@@ -27,6 +27,7 @@ class FindPatientPage
 
   def choose_patient(patient)
     @driver.find_element(xpath: "//td[contains(text(),'#{patient}')]").click
+    PatientPage.new(@driver)
   end
 
   def unsuccess_search_message_onpage?

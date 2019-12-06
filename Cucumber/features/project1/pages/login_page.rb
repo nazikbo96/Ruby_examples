@@ -1,5 +1,5 @@
 class LoginPage
-  attr_accessor :txt_username,:txt_password,:location,:btn_login
+  attr_accessor :driver
 
   def initialize(driver)
     @driver = driver
