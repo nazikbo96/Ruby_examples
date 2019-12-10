@@ -7,7 +7,6 @@ class FindPatientPage
   def initialize(browser)
     @driver = browser
     @find_patient_search_field = @driver.find_element(id: 'patient-search')
-    @table_column_content = @driver.find_elements(css: 'td')
   end
 
   def find_patient_search_field_input(person)
@@ -21,7 +20,7 @@ class FindPatientPage
 
   def correct_table?
     result = true
-    @table_column_content.each { |element| result = false if element.text.nil? }
+    @driver.find_elements(css: 'td').each { |element| result = false if element.text.nil? }
     result
   end
 

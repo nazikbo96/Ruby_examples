@@ -1,4 +1,3 @@
-
 class DataManagementPage
 
   include TopPart
@@ -31,7 +30,7 @@ class PreferedRecordPage
     @driver.find_element(id: 'confirm-button')
   end
 
-  def confirm_button_click
+  def confirm_btn_click
     sleep(2)
     confirm_button.click
     PatientAfterMergingPage.new(@driver)
@@ -66,21 +65,14 @@ class MergePatientsPage
     @patient_search_field.send_keys name
   end
 
-  def get_first_patient(id)
+  def get_patient(id)
     @driver.find_element(xpath: "//td[contains(text(),'#{id}')]")
   end
 
-  def get_second_patient(id)
-    @driver.find_element(xpath: "//td[contains(text(),'#{id}')]")
+  def choose_patient(id)
+    get_patient(id).click
   end
 
-  def first_patient_click(id)
-    get_second_patient(id).click
-  end
-
-  def second_patient_click(id)
-    get_second_patient(id).click
-  end
 
   def confirm_button
     @driver.find_element(css: '.confirm')
