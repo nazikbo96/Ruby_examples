@@ -7,3 +7,9 @@ Before do |scenario|
   @home_page = @login_page.verify_home_page
   expect(@home_page).not_to be nil
 end
+
+After do |scenario|
+  @log_out_page = LogOutPage.new
+  @home_page = @log_out_page.home_btn_click
+  @home_page.logout_btn_click
+end

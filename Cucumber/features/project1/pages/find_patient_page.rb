@@ -4,33 +4,34 @@ class FindPatientPage
 
   include TopPart
 
-  def initialize(browser)
-    @driver = browser
-    @find_patient_search_field = @driver.find_element(id: 'patient-search')
+  def find_patient_search_field
+    driver.find_element(id: 'patient-search')
   end
 
   def find_patient_search_field_input(person)
-    @find_patient_search_field.send_keys person
+    find_patient_search_field.send_keys person
     sleep(3)
   end
 
-  def correct_search?(name)
-    @driver.find_elements(xpath: "//td[contains(text(),'#{name}')]").length == (@driver.find_elements(css: 'tr').length - 1)
+  def get_table_cells
+    driver.find_elements(css: 'td')
   end
 
   def correct_table?
-    result = true
-    @driver.find_elements(css: 'td').each { |element| result = false if element.text.nil? }
-    result
+    get_table_cells.all?(&:text)
+  end
+
+  def correct_search?(name)
+    driver.find_elements(xpath: "//td[contains(text(),'#{name}')]").length == (driver.find_elements(css: 'tr').length - 1)
   end
 
   def choose_patient(patient)
-    @driver.find_element(xpath: "//td[contains(text(),'#{patient}')]").click
-    PatientPage.new(@driver)
+    driver.find_element(xpath: "//td[contains(text(),'#{patient}')]").click
+    PatientPage.new
   end
 
   def unsuccess_search_message_onpage?
-    @driver.find_element(css: ".dataTables_empty").nil?
+    driver.find_element(css: ".dataTables_empty").nil?
   end
 
 end

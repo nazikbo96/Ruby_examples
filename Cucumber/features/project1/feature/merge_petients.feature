@@ -2,15 +2,15 @@ Feature: Merge patients Feature
 
   Scenario: Unsuccess merge Scenario
     Given I go to Merge Patient
-    And I type Steven into search field
-    And I choose patients by id 1006JJ
-    And I choose patients by id 1006JJ
+    When I type Steven into search field
+    And I choose patients by id 100GWK
+    And I choose patients by id 100GWK
     Then I verify confirm button is disabled
 
   Scenario: Success merge Scenario
     Given I go to Merge Patient
-    And I type Steven into search field
-    And I choose patients by id 1006JJ
-    And I choose patients by id 1002A6
+    When I type Steven into search field
+    And I choose patients by id 100GWK
+    And I choose patients by id 1000KN
     Then I choose first patient records
-    And I verify correct name Steven Young after merging
+    And I verify correct name Steven Evans after merging

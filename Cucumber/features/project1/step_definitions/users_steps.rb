@@ -4,7 +4,7 @@ Given(/^I search for patient record for ([A-Z]\w+)$/) do |name|
   @find_patient_page.find_patient_search_field_input(name)
 end
 
-Then(/^I see ([A-Z]\w+) in search results$/) do |name|
+When(/^I see ([A-Z]\w+) in search results$/) do |name|
   expect(@find_patient_page.correct_search?(name)).to be true
 end
 
@@ -16,33 +16,33 @@ Given(/^I click on register patient button$/) do
   @register_patient_page = @home_page.register_patient_btn_click
 end
 
-And(/^I type into given name field ([A-Z]\w+) and into family name ([A-Z]\w+)$/) do |name,f_name|
+When(/^I type into given name field ([A-Z]\w+) and into family name ([A-Z]\w+)$/) do |name,f_name|
   @register_patient_page.given_name_field_input(name)
   @register_patient_page.family_name_field_input(f_name)
 end
 
-Then(/^I click on gender menu tab and choose male$/) do
+And(/^I click on gender menu tab and choose male$/) do
   @register_patient_page.gender_menu_click
   @register_patient_page.male_choose_click
 end
 
-Then(/^I go to birthdate menu tab and type into estimated years field ([0-9]+) and into month ([0-9]+)$/) do |years,month|
+And(/^I go to birthdate menu tab and type into estimated years field ([0-9]+) and into month ([0-9]+)$/) do |years,month|
   @register_patient_page.birthdate_menu_click
   @register_patient_page.estimated_years_field_input(years)
   @register_patient_page.estimated_mounth_field_input(month)
 end
 
-Then(/^I click on Address menu tab and fill address field with ([A-Z]\w+)$/) do |address|
+And(/^I click on Address menu tab and fill address field with ([A-Z]\w+)$/) do |address|
   @register_patient_page.address_menu_click
   @register_patient_page.address_field_input(address)
 end
 
-Then(/^I click on Phone number menu tab and type (\+[0-9]+)$/) do |number|
+And(/^I click on Phone number menu tab and type (\+[0-9]+)$/) do |number|
   @register_patient_page.phone_number_menu_click
   @register_patient_page.phone_field_input(number)
 end
 
-And(/^I confirm patient registration$/) do
+Then(/^I confirm patient registration$/) do
   @register_patient_page.confirm_menu_click
   @patient_page = @register_patient_page.confirm_btn_click
 end
@@ -52,23 +52,20 @@ Then(/^I verify warning message on page$/) do
   expect(@register_patient_page.similar_message_onpage?).to be false
 end
 #------------------------------------------------------------------------------------
-Then(/^I goto home page$/) do
-  @basic_page = BasicPage.new(@home_page.driver)
-  @home_page = @basic_page.home_btn_click
-end
-
-Then(/^I choose ([A-Z]\w+) patient$/) do |name|
+When(/^I choose ([A-Z]\w+) patient$/) do |name|
   @patien_page = @find_patient_page.choose_patient(name)
 end
 
-Then(/^I delete ([A-Z]\w+) patient for the reason ([A-Z]\w+)$/) do |name, reason|
+And(/^I delete ([A-Z]\w+) patient for the reason ([A-Z]\w+)$/) do |name, reason|
   @patien_page.delete_patient_btn_click
   @patien_page.delete_reason_field_input(reason)
   @find_patient_page = @patien_page.confirm_delete_btn_click
+end
+
+Then(/^I verify deleting by searching ([A-Z]\w+) patient$/) do |name|
   @find_patient_page.find_patient_search_field_input(name)
   expect(@find_patient_page.unsuccess_search_message_onpage?).to be false
 end
-
 #------------------------------------------------------------------------------------
 Given(/^I go to Manage Scheduler$/) do
   @system_administration_page = @home_page.system_administration_btn_click
@@ -77,30 +74,30 @@ Given(/^I go to Manage Scheduler$/) do
   expect(@manage_scheduler_page).not_to be nil
 end
 
-And(/^I click on Add new task$/) do
+When(/^I click on Add new task$/) do
   @new_task_page = @manage_scheduler_page.add_new_task_btn_click
   expect(@new_task_page).not_to be nil
 end
 
-Then(/^I fill name field with ("(\D+\s)+\D+") and choose option$/) do |name|
+And(/^I fill name field with ("(\D+\s)+\D+") and choose option$/) do |name|
   @new_task_page.name_field_input(name)
   @new_task_page.schedulable_class_dropdown_choose('org.openmrs.scheduler.tasks.AutoCloseVisitsTask')
 end
 
-Then(/^I type into description field ("(\D+\s)+\D+")$/) do |describtion|
+And(/^I type into description field ("(\D+\s)+\D+")$/) do |describtion|
   @new_task_page.describtion_field_input(describtion)
 end
 
-Then(/^I type into start time field (\d+-\d+-\d+\s\d+:\d+:\d+.\d+) and type (\d+) into interval field$/) do |time, interval|
+And(/^I type into start time field (\d+-\d+-\d+\s\d+:\d+:\d+.\d+) and type (\d+) into interval field$/) do |time, interval|
   @new_task_page.start_time_field_input(time)
   @new_task_page.repeat_interval_field_input(interval)
 end
 
-Then(/^I choose interval type by ([A-Z]\w+)$/) do |type|
+And(/^I choose interval type by ([A-Z]\w+)$/) do |type|
   @new_task_page.repeat_interval_type_dropdown_choose(type)
 end
 
-Then(/^I click save button$/) do
+Then(/^I click save button and expect task was added$/) do
   @new_task_page.save_btn_click
   expect(@new_task_page.task_was_added?).to be false
 end
@@ -110,7 +107,7 @@ Given(/^I go to Merge Patient$/) do
   @merge_patient_page = @data_management_page.merge_patient_btn_click
 end
 
-And(/^I type ([A-Z]\w+) into search field$/) do |name|
+When(/^I type ([A-Z]\w+) into search field$/) do |name|
   @merge_patient_page.patient_search_field_input(name)
 end
 

@@ -1,57 +1,67 @@
 require_relative 'top_part.rb'
 
 class RegisterPatient
-  
+
   include TopPart
 
-  def initialize(browser)
-    @driver = browser
+  def given_name_field
+    driver.find_element(css: "input[name = givenName]")
   end
 
-  def given_name_field
-    @driver.find_element(css: "input[name = givenName]")
-  end
   def family_name_field
-    @driver.find_element(css: "input[name = familyName]")
+    driver.find_element(css: "input[name = familyName]")
   end
+
   def gender_menu
-    @driver.find_element(id: 'genderLabel')
+    driver.find_element(id: 'genderLabel')
   end
+
   def male_choose
-    @driver.find_element(xpath: "//select[contains(@id,'gender-field')]//option[contains(text(),'Male')]")
+    driver.find_element(xpath: "//select[contains(@id,'gender-field')]//option[contains(text(),'Male')]")
   end
+
   def female_choose
-    @driver.find_element(xpath: "//select[contains(@id,'gender-field')]//option[contains(text(),'Female')]")
+    driver.find_element(xpath: "//select[contains(@id,'gender-field')]//option[contains(text(),'Female')]")
   end
+
   def birthdate_menu
-    @driver.find_element(id: 'birthdateLabel')
+    driver.find_element(id: 'birthdateLabel')
   end
+
   def estimated_years_field
-    @driver.find_element(id: 'birthdateYears-field')
+    driver.find_element(id: 'birthdateYears-field')
   end
+
   def estimated_mounth_field
-    @driver.find_element(id: 'birthdateMonths-field')
+    driver.find_element(id: 'birthdateMonths-field')
   end
+
   def address_menu
-    @driver.find_element(xpath: "//span[contains(text(),'Address')]")
+    driver.find_element(xpath: "//span[contains(text(),'Address')]")
   end
+
   def address_field
-    @driver.find_element(id: 'address1')
+    driver.find_element(id: 'address1')
   end
+
   def phone_number_menu
-    @driver.find_element(xpath: "//span[contains(text(),'Phone')]")
+    driver.find_element(xpath: "//span[contains(text(),'Phone')]")
   end
+
   def phone_field
-    @driver.find_element(css: '.phone.focused')
+    driver.find_element(css: '.phone.focused')
   end
+
   def confirm_menu
-    @driver.find_element(id: 'confirmation_label')
+    driver.find_element(id: 'confirmation_label')
   end
+
   def confirm_btn
-    @driver.find_element(id: 'submit')
+    driver.find_element(id: 'submit')
   end
+  
   def similar_patient_message
-    @driver.find_element(id: 'similarPatients')
+    driver.find_element(id: 'similarPatients')
   end
   #-----------------------------------------------------------------------------
 
@@ -114,7 +124,8 @@ class RegisterPatient
 
   def confirm_btn_click
     confirm_btn.click
-    PatientPage.new(@driver)
+    sleep(2)
+    PatientPage.new
   end
 
   def similar_message_onpage?
