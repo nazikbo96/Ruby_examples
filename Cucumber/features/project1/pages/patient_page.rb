@@ -11,8 +11,12 @@ class PatientPage
     driver.find_element(id: 'delete-reason')
   end
 
+  def patient_dialog
+    driver.find_element(css: '#delete-patient-creation-dialog')
+  end
+
   def confirm_delete_btn
-    driver.find_element(xpath: "//div[contains(@id,'delete-patient-creation-dialog')]//button[contains(@class,'confirm right')]")
+    patient_dialog.find_element(css: '.confirm.right')
   end
 
   def delete_patient_btn_click
