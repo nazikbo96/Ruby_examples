@@ -23,4 +23,4 @@ Also I developed some tests (_tests_ directory).
 cd /Users/.../Ruby_examples/OlxProject/tests
 rspec spec test_name.rb
 ```
-### Also you can find test cases [here](https://confluence.softserveinc.com/display/CiscoArrAy/Test+Cases)
+##### Also you can find test cases [here](https://confluence.softserveinc.com/display/CiscoArrAy/Test+Cases)
