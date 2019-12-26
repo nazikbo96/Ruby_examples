@@ -18,5 +18,5 @@ Also was developed some tests (_tests_ directory).
 cd /Users/.../Ruby_examples/Cucumber
 cucumber features/project1/feature/test_name.feature
 ```
-After that Cucumber generate Report.html file in root directory.
+After that Cucumber generate ***Report.html*** file in root directory.
 ##### Also you can find test cases [here](https://confluence.softserveinc.com/display/CiscoArrAy/Test+Cases).
