@@ -19,4 +19,4 @@ cd /Users/.../Ruby_examples/Cucumber
 cucumber features/project1/feature/test_name.feature
 ```
 After that Cucumber generate ***Report.html*** file in root directory.
-##### Also you can find test cases [here](https://confluence.softserveinc.com/display/CiscoArrAy/Test+Cases).
+##### Also you can find test cases [here](https://confluence.softserveinc.com/display/CiscoArrAy/Test+cases+for+Cucumber+Project).

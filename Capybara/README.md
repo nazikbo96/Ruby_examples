@@ -18,4 +18,4 @@ Also was developed some tests (_spec_ directory).
 cd /Users/.../repos/Ruby_examples/Capybara/spec
 rspec spec test_name.rb
 ```
-##### Also you can find test cases [here](https://confluence.softserveinc.com/display/CiscoArrAy/Test+Cases).
+##### Also you can find test cases [here](https://confluence.softserveinc.com/display/CiscoArrAy/Test+cases+for+Capybara+project).
