@@ -1,1 +1,5 @@
 *.html
+*.lock
+*.DS_Store
+*.yml
+*.log
