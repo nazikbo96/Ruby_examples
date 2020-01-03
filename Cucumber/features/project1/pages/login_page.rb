@@ -37,7 +37,7 @@ class LoginPage
   end
 
   def user_logged_in?
-    driver.find_element(:xpath => "//h4[contains(text(), 'Logged in as Super User')]").nil? == false
+    driver.find_element(:xpath => "//h4[contains(text(), 'Logged in as')]").nil? == false
   end
 
   def verify_home_page
