@@ -1,10 +1,10 @@
 # Cucumber Project
 
 ### Hi everyone!
-###### This is short description of my project.
+###### This is short description of Cucumber project.
 
-To build web architecture was used **Page Object pattern**.
-Also was developed some tests (_tests_ directory).
+**Page Object pattern**  was used for building web architecture.
+The developed tests can be found in spec directory.
 #### *These tests verify next functional:*
 - Finding patients records by name
 - Merge two patients records
@@ -18,5 +18,5 @@ Also was developed some tests (_tests_ directory).
 cd /Users/.../Ruby_examples/Cucumber
 cucumber features/project1/feature/test_name.feature
 ```
-After that Cucumber generate ***Report.html*** file in root directory.
-##### Also you can find test cases [here](https://confluence.softserveinc.com/display/CiscoArrAy/Test+cases).
+Report file with test results can be found in the root directory.
+##### Test cases can be found under the following [link](https://confluence.softserveinc.com/display/CiscoArrAy/Test+cases).

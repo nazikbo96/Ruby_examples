@@ -1,10 +1,10 @@
 # Capybara Project
 
 ### Hi everyone!
-###### This is short description of my project.
+###### This is short description of Capybara project.
 
-To build web architecture was used **Page Object pattern**.
-Also was developed some tests (_spec_ directory).
+**Page Object pattern**  was used for building web architecture.
+The developed tests can be found in spec directory.
 #### *These tests verify next functional:*
 - verify elements on Dashboard (links, buttons, dropdowns, tooltips, icons, wordings, tables)
 - verify navigation to all main menu tabs
@@ -18,4 +18,4 @@ Also was developed some tests (_spec_ directory).
 cd /Users/.../repos/Ruby_examples/Capybara/spec
 rspec spec test_name.rb
 ```
-##### Also you can find test cases [here](https://confluence.softserveinc.com/display/CiscoArrAy/Test+cases).
+##### Test cases can be found under the following [link](https://confluence.softserveinc.com/display/CiscoArrAy/Test+cases).
