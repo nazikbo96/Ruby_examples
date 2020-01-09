@@ -1,11 +1,11 @@
 require_relative '../all_requires.rb'
 
 describe 'When testing demo.opensourcecms website' do
-  let(:count_of_ref) { 41 }
+  let(:count_of_ref) { 43 }
   let(:count_of_buttons) { 7 }
   let(:count_of_headings) { 12 }
   let(:count_of_inputs) { 2 }
-  let(:count_of_text) { 43 }
+  let(:count_of_text) { 44 }
   let(:dashboard_headings) {['Dashboard', 'Welcome to WordPress!', 'At a Glance', 'Activity', 'Quick Draft',
       'WordPress Events and News', 'Get Started', 'Next Steps', 'More Actions',
       'Recently Published', 'Recent Comments', 'View more comments' ]}
